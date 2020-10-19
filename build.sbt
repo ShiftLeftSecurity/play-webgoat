@@ -1,6 +1,6 @@
 name := "play-webgoat"
 
-version := "1.0"
+version := "1.0-sptestsTag-SNAPSHOT"
 
 lazy val `play-webgoat` = (project in file(".")).enablePlugins(PlayScala)
 
@@ -20,3 +20,12 @@ scalacOptions ++=
 
 libraryDependencies += guice
 libraryDependencies += ws
+
+ThisBuild / resolvers ++= Seq(
+  "Artifactory release local" at "https://shiftleft.jfrog.io/shiftleft/libs-snapshot-local",
+)
+
+
+ThisBuild / publishTo := Some(
+  "releases" at "https://shiftleft.jfrog.io/shiftleft/libs-snapshot-local")
+
